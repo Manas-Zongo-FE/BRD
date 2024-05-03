@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Business Requirements Document for Transforming Monolith to Microarchitecture - Dashboard Module</title>
+    <style>
+        body {
+            margin: 1rem;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #880808;
+            padding-left: 0.6rem;
+        }
+
+        h4 {
+            padding-left: 0.8rem;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        li {
+            margin-bottom: 5px;
+            margin-left: 1rem;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            padding-left: 1rem;
+        }
+
+        .inner-div {
+            margin-left: 2rem;
+        }
+
+        .suggestion {
+            color: grey
+        }
+        .centered-image {
+            max-width: 100%; 
+            height: auto;  
+            display: block; 
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Business Requirements Document for Dashboard 2.0</h1>
+    <h2>1. Introduction</h2>
+    <h3>1.1 Purpose</h3>
+    <p>This document outlines the requirements for transforming the Dashboard module of a monolithic architecture into a
+        microarchitecture. The goal is to:</p>
+    <br>
+    <div class="inner-div">
+        <li>The Dashboard should be poly-repo microservice based.</li>
+        <li>The Dashboard should be able to display live data.</li>
+        <li>The Dashboard should be able to save configurations for each user.</li>
+        <li>The Dashboard should be able to handle custom query.</li>
+        <li>The Dashboard should have a uptime close to 100%. </li>
+        <li>The Dashboard needs AI abilities for insights and chat capabilities.</li>
+    </div>
+    <h3>1.2 Scope:</h3>
+    <h4>1.2.1 In Scope:</h4>
+    <div class="inner-div">
+
+        <h4>1.2.1.1. Frontend:</h4>
+        <li>Design Consistency: Factory based component design for visual consistency and scalaility all across the
+            dashboard.</li>
+        <li>Intuitive Navigation: Design clear menus and workflows for ease of use.</li>
+
+        <h4>1.2.1.2. Backend:</h4>
+        <li>
+            Microservices Backend: Develop a NodeJS-based backend API layer consisting of the necessary
+            microservices
+            (Core Data, Analytics, Legacy Integration, etc.). Ensure secure communication with the frontend and
+            manage database interactions.</li>
+
+        <li>Kafka Integration: Implementation of Kafka pipeline for data orchestration</li>
+        <ul>
+            <li>Kafka Topics: Design Kafka topics to organise data flow (e.g., separate topics for live updates,
+                historical
+                data transfers).</li>
+
+            <li> Producers: Develop Kafka producers to publish data from existing systems into the pipeline.
+            </li>
+
+            <li>Consumers: Create Kafka consumers within the new dashboard's backend to receive updates and feed
+                them into
+                the database.</li>
+
+        </ul>
+
+        <h4>1.2.1.3. Database:</h4>
+
+        <li>Schema Design: Optimise database structure for storing historical and time-series data for
+            efficient queries.</li>
+
+        <li> Query Optimisation: Develop queries for both static dashboard elements and real-time updates.
+        </li>
+
+        <li>TimeScaleDB Integration: Leverage TimeScaleDB's features for time-series data analysis and
+            efficient
+            real-time updates.</li>
+
+        <h4>1.2.1.4. Data Migration:</h4>
+
+        <li>Data Analysis: Assess what data needs to be migrated and in what format it currently exists.
+        </li>
+        <li>ETL Processes: Create extract, transform, and load (ETL) combining data from multiple sources
+            into a large, central repository called a data warehouse processes to move data to the new,
+            optimised database structure.</li>
+        <li>Data Validation: Ensure data quality and consistency after migration</li>
+    </div>
+    <h4>1.2.2 Out of Scope:</h4>
+    <div class="inner-div">
+        <li>Immediate Replacement of the Legacy System: The project aims for a phased migration. The legacy dashboard
+            will operate alongside the new dashboard during the transition.</li>
+        <li>Complex AI Model Development: Assume the development of any sophisticated AI models is handled by a
+            separate project or dedicated team. However, this project lays the groundwork for integrating and
+            visualizing the outputs of these models.</li>
+    </div>
+
+    <h3>1.3 Objectives:</h3>
+    <div class="inner-div">
+        <li>The Dashboard should be poly-repo microservice based</li>
+        <li>The Dashboard should be able to display live data</li>
+        <li>The Dashboard should be able to save configurations for each user</li>
+        <li>The Dashboard should be able to handle custom query</li>
+        <li>Improve Dashboard performance and responsiveness.</li>
+        <li>Increase Dashboard scalability to accommodate growing user loads.</li>
+        <li>Enhance Dashboard maintainability and ease of updates.</li>
+        <li>The Dashboard needs AI requirements</li>
+    </div>
+
+    <h2>2. Functional Requirements:</h2>
+    <div class="inner-div">
+        <h3>2.1 Microservices:</h3>
+        <li>The dashboard should be the initial phase of compartmentalization of backend</li>
+        <h3>2.2 Data:</h3>
+        <li>The Dashboard should support various data sources, including internal applications and external APIs. Data
+            should
+            be displayed in a clear and concise manner. The Dashboard should provide real-time
+            updates and notifications.</li>
+        <h3>2.3 Data Visualization:</h3>
+        <li>The Dashboard should provide various data visualization options, such as charts, graphs, and dashboards. The
+            visualizations should be interactive and allow users to drill down into specific data
+            points.</li>
+        <h3>2.4 Save Settings:</h3>
+        <li>The Dashboard should have the capability to save the settings of the user of how the person arranged the
+            dashboard</li>
+        <h3>2.5 Custom Query:</h3>
+        <li>The Dashboard should be able to put showcase result of custom queries</li>
+    </div>
+
+    <h2>3. Non-Functional Requirements</h2>
+    <div class="inner-div">
+        <h3>3.1 Performance</h3>
+        <li>The Dashboard should be highly responsive and performant. The Dashboard should be able to handle high
+            volumes of
+            concurrent users and data requests.</li>
+        <h3>3.2 Scalability</h3>
+        <li>The Dashboard should be scalable to accommodate growing user loads and data volumes. The Dashboard should be
+            able
+            to be easily scaled up or down as needed.</li>
+        <h3>3.3 Reliability</h3>
+        <li>The Dashboard should be intuitive but mainly reliable. The Dashboard should be available and operational 99.9% of the
+            time.</li>
+        <h3>3.4 Maintainability</h3>
+        <li>The Dashboard should be easy to maintain and update. The Dashboard should have a clear and concise codebase.
+            The
+            Dashboard should have well-documented APIs and processes.</li>
+
+    </div>
+
+    <h2>4. Technical Considerations</h2>
+    <h3> 4.1 System Architecture</h3>
+    <img src = "./assets/sys-arc.png" class="centered-image"/>
+
+    <h3>4.2 Technology Stack</h3>
+    <div class="inner-div">
+        <li>Frontend: ReactJS - Continues handling the user interface.
+        <li>Backend:
+            <ol>
+                <li>Microservices: NodeJS - We can utilize our existing Node Js functions and code</li>
+                <li>Database: PostgreSQL - The core database for structured data.</li>
+                <li>Time-series database: TimescaleDB - Efficiently stores and analyzes time-series data. Would be of
+                    great
+                    help for realtime data</li>
+                <li>Message broker: Kafka - Enables asynchronous communication and event streaming between
+                    microservices.
+                </li>
+                <li>API Gateway interaction: Reduces complexity and speeds up app releases, client type
+                    Streamline and simplify request processing and policy enforcement by centralizing the point of
+                    control
+                    and offloading non-functional requirements to the infrastructure layer, Simplify troubleshooting
+                    with
+                    granular real-time and historical metrics and dashboards</li>
+            </ol>
+        <li>Machine Learning: Fine-tuned LLM with our data - analytics-focused LLM model for data analysis tasks within
+            the
+            microservices. <i class="suggestion">My suggestion for LLM: GPT-NeoX-20B because of its stats and maths data it has been trained on</i>
+    </div>
+    <h3>4.3 Caching</h3>
+    <li>The Dashboard should use a caching mechanism for improved performance. The caching mechanism should be
+        effective
+        in reducing the number of database queries.</li>
+    <h3>4.4 Monitoring and Instrumentation</h3>
+    <li>The Dashboard should be monitored and instrumented to ensure a high performance and scalability. The
+        monitoring
+        tools should provide real-time insights into Dashboard performance.</li>
+
+    <h2>Conclusion</h2>
+
+    <p>The Dashboard should be a critical component of the application. By implementing the requirements outlined in
+        this
+        document, we can improve Dashboard performance, scalability, and maintainability.</p>
