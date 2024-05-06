@@ -209,6 +209,29 @@
 	<h3> 4.1 System Architecture</h3>
 	<img src="./assets/sys-arc.png" class="centered-image" />
 
+	<li>Users: These are the individuals who interact with the system using React Js user interface</li>
+	<li>API Gateway: This component acts as the single point of entry for all API requests coming from the dashboards.
+		It routes these requests to the appropriate backend services. Reduces complexity and speeds up app releases,
+		client type
+		Streamline and simplify request processing and policy enforcement by centralizing the point of
+		control
+		and offloading non-functional requirements to the infrastructure layer, Simplify troubleshooting
+		with
+		granular real-time and historical metrics and dashboards</li>
+	<li>Service Registry: This component maintains information about the various services that are part of the system.
+		It essentially acts as a directory that the API Gateway uses to locate and interact with these services.</li>
+	<li>Existing Dashboard Server: This server runs the existing user interface that users interact with.</li>
+	<li>New Dashboard Service: This service is responsible for running the new user interface that the system is being
+		designed for.</li>
+	<li>Kafka: This is a publish-subscribe messaging system that enables components to communicate with each other by
+		exchanging messages. </li>
+	<li>Databases: The system appears to utilize two databases:
+		<ul>
+			<li>MongoDB: This is a NoSQL database that stores data in JSON-like documents.</li>
+			<li>PostgreSQL: This is a relational database that stores data in tables with rows and columns.</li>
+		</ul>
+
+	</li>
 	<h3>4.2 Technology Stack</h3>
 	<div class="inner-div">
 		<li>Frontend: ReactJS - Continues handling the user interface.
@@ -222,12 +245,6 @@
 				<li>Message broker: Kafka - Enables asynchronous communication and event streaming between
 					microservices.
 				</li>
-				<li>API Gateway interaction: Reduces complexity and speeds up app releases, client type
-					Streamline and simplify request processing and policy enforcement by centralizing the point of
-					control
-					and offloading non-functional requirements to the infrastructure layer, Simplify troubleshooting
-					with
-					granular real-time and historical metrics and dashboards</li>
 			</ol>
 		<li>Machine Learning: Fine-tuned LLM with our data - analytics-focused LLM model for data analysis tasks within
 			the
