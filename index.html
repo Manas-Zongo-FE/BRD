@@ -206,11 +206,13 @@
 	</div>
 
 	<h2>4. Technical Considerations</h2>
+	<div class="inner-div">
 	<h3> 4.1 System Architecture</h3>
 	<img src="./assets/sys-arc.png" class="centered-image" />
 
 	<li>Users: These are the individuals who interact with the system using React Js user interface</li>
-	<li>API Gateway: This component acts as the single point of entry for all API requests coming from the dashboards.
+	<li>API Gateway: This component acts as the single point of entry for all API requests coming from the
+		dashboards.
 		It routes these requests to the appropriate backend services. Reduces complexity and speeds up app releases,
 		client type
 		Streamline and simplify request processing and policy enforcement by centralizing the point of
@@ -218,12 +220,16 @@
 		and offloading non-functional requirements to the infrastructure layer, Simplify troubleshooting
 		with
 		granular real-time and historical metrics and dashboards</li>
-	<li>Service Registry: This component maintains information about the various services that are part of the system.
-		It essentially acts as a directory that the API Gateway uses to locate and interact with these services.</li>
+	<li>Service Registry: This component maintains information about the various services that are part of the
+		system.
+		It essentially acts as a directory that the API Gateway uses to locate and interact with these services.
+	</li>
 	<li>Existing Dashboard Server: This server runs the existing user interface that users interact with.</li>
-	<li>New Dashboard Service: This service is responsible for running the new user interface that the system is being
+	<li>New Dashboard Service: This service is responsible for running the new user interface that the system is
+		being
 		designed for.</li>
-	<li>Kafka: This is a publish-subscribe messaging system that enables components to communicate with each other by
+	<li>Kafka: This is a publish-subscribe messaging system that enables components to communicate with each other
+		by
 		exchanging messages. </li>
 	<li>Databases: The system appears to utilize two databases:
 		<ul>
@@ -239,22 +245,27 @@
 			<ol>
 				<li>Microservices: NodeJS - We can utilize our existing Node Js functions and code</li>
 				<li>Database: PostgreSQL - The core database for structured data.</li>
-				<li>Time-series database: TimescaleDB - Efficiently stores and analyzes time-series data. Would be of
+				<li>Time-series database: TimescaleDB - Efficiently stores and analyzes time-series data. Would be
+					of
 					great
 					help for realtime data</li>
 				<li>Message broker: Kafka - Enables asynchronous communication and event streaming between
 					microservices.
 				</li>
 			</ol>
-		<li>Machine Learning: Fine-tuned LLM with our data - analytics-focused LLM model for data analysis tasks within
+		<li>Machine Learning: Fine-tuned LLM with our data - analytics-focused LLM model for data analysis tasks
+			within
 			the
-			microservices. <i class="suggestion">My suggestion for LLM: GPT-NeoX-20B because of its stats and maths data
+			microservices. <i class="suggestion">My suggestion for LLM: GPT-NeoX-20B because of its stats and maths
+				data
 				it has been trained on</i>
 	</div>
 	<h3>4.3 Monitoring and Instrumentation</h3>
 	<li>The Dashboard should be monitored and instrumented to ensure a high performance and scalability. The
 		monitoring
 		tools should provide real-time insights into Dashboard performance.</li>
+
+	</div>
 
 	<h2>Conclusion</h2>
 
